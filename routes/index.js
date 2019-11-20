@@ -113,7 +113,6 @@ route.post('/floors/delete/:id', function(req,res){
     .catch(err=>{
         res.send(err.message);
     })
-
 })
 route.post('/rooms/delete/:id', function(req,res){
     const deleteId = req.body.deleteId;
@@ -150,4 +149,9 @@ route.post('/users/delete/:id', function(req,res){
     .catch(err=>{
         res.send(err.message);
     })
+})
+
+//Admin: edit
+route.get('/floors/edit/:id', function(req,res){
+    
 })
