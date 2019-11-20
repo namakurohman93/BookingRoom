@@ -15,13 +15,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       booking_date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       booking_start: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       booking_end: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       participant: {
         type: Sequelize.INTEGER

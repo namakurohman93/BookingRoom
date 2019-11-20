@@ -75,11 +75,13 @@ route.post('/users/add', function(req,res){
     const userName = req.body.userName;
     const password = req.body.password;
     const FloorId = req.body.FloorId;
+    const email = req.body.email;
 
     User.create({
         username: userName,
         password: password,
-        FloorId: FloorId
+        FloorId: FloorId,
+        email: email
     })
     .then(()=>{
         res.send('successfully created...');
@@ -234,12 +236,14 @@ route.post('/users/edit/:id', function(req,res){
     const userName = req.body.userName;
     const password = req.body.password;
     const FloorId = req.body.FloorId;
+    const email = req.body.email;
 
     User.update(
         {
             username: userName,
             password: password,
-            FloorId: FloorId
+            FloorId: FloorId,
+            email: email
         },
         {
             where: {id: userId}
@@ -267,15 +271,64 @@ route.post('/login', function(req,res){
         if(user==null) {
             res.send('username or password wrong!')
         } else if(user[0].dataValues.password==password) {
-            res.render('main')
+            res.cookie('userId', user[0].dataValues.id).render('main')
         } else {
             res.send('username or password wrong!')
         }
-        
     })
     .catch(err=>{
         frames.send(err.message);
     })
 })
+route.get('/logout', function(req,res){
+    res.clearCookie('userId')
+    res.redirect('/login')
+})
+
+route.get('/book', function(req,res){
+    Room.findAll({include: [User]})
+    .then(rooms=>{
+        res.send(rooms);
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+route.get('/book/add', function(req,res){
+    const userId = req.cookies.userId;
+    const roomId = req.body.roomId;
+    const bookingDate = req.body.bookingDate;
+    const bookingStart = req.body.bookingStart;
+    const bookingEnd = req.body.bookingEnd;
+    const participant = req.body.participant;
+
+    let statusAvailable = RoomUser.isAvailable(roomId,bookingDate,bookingStart,bookingEnd,participant);
+
+    if(statusAvailable) {
+        Room.findByPk(roomId)
+        .then(room=>{
+            if(room.capacity>=participant) {
+                return RoomUser.create({
+                    UserId: userId,
+                    RoomId: roomId,
+                    booking_date: bookingDate,
+                    booning_start: bookingStart,
+                    booking_end: bookingEnd
+                })
+            } else {
+                res.send('not enough capacity');               
+            }
+        })
+        .then(()=>{
+            res.send('succesfully booked!');
+        })
+        .catch(err=>{
+            res.send(err.message);
+        })
+    } else {
+        res.send('room no available');
+    }
+})
+
 
 module.exports = route

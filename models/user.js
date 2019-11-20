@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    FloorId: DataTypes.INTEGER
+    FloorId: DataTypes.INTEGER,
+    email: DataTypes.STRING
   }, {sequelize});
   User.associate = function(models) {
     User.belongsToMany(models.Room, {through: models.RoomUser})
