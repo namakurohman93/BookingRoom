@@ -151,3 +151,6 @@ route.post('/users/delete/:id', function(req,res){
         res.send(err.message);
     })
 })
+
+
+module.exports = route

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {sequelize});
   Floor.associate = function(models) {
     Floor.hasMany(models.Room);
-    Floor.hasMany(model.User);
+    Floor.hasMany(models.User);
   };
   return Floor;
 };
