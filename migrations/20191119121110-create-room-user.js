@@ -11,7 +11,7 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER
       },
-      FloorId: {
+      RoomId: {
         type: Sequelize.INTEGER
       },
       booking_date: {
