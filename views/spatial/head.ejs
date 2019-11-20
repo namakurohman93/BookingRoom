@@ -1,0 +1,11 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= data.title %></title>
+
+    <% data.styles.forEach(css => { %>
+      <link href="<%= css.href %>" rel="stylesheet" type="text/css">
+    <% }) %>
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  </head>
