@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {sequelize});
   Room.associate = function(models) {
     Room.belongsToMany(models.User, {through: models.RoomUser})
+    Room.belongsTo(models.Floor)
   };
   return Room;
 };
