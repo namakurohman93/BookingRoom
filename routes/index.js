@@ -261,14 +261,17 @@ route.post('/login', function(req,res){
     const password = req.body.password;
 
     User.findAll({
-        where: {name: userName}
+        where: {username: userName}
     })
     .then(user=>{
         if(user==null) {
             res.send('username or password wrong!')
+        } else if(user[0].dataValues.password==password) {
+            res.render('main')
         } else {
-            res.send('user succesfully login!')
+            res.send('username or password wrong!')
         }
+        
     })
     .catch(err=>{
         frames.send(err.message);
