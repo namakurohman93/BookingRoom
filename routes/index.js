@@ -151,12 +151,127 @@ route.post('/users/delete/:id', function(req,res){
     })
 })
 
-<<<<<<< HEAD
 //Admin: edit
 route.get('/floors/edit/:id', function(req,res){
-    
+    const floorId = req.params.id;
+
+    Floor.findByPk(floorId)
+    .then(floor=>{
+        res.send(floor);
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
 })
-=======
+route.post('/floors/edit/:id', function(req,res){
+    const floorId = req.params.id;
+    const name = req.body.floorName;
+
+    Floor.update(
+        {
+            name: name
+        },
+        {
+        where: {id: floorId}
+        }
+    )
+    .then(()=>{
+        res.send('successfully updated...');
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+
+route.get('/rooms/edit/:id', function(req,res){
+    const roomId = req.params.id;
+    Room.findByPk(roomId, {include: [Floor]})
+    .then(room=>{
+        res.send(room);
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+route.post('/room/edit/:id', function(req,res){
+    const roomId = req.params.id;
+    const name = req.body.roomName;
+    const capacity = req.body.capacity;
+    const FloorId = req.body.FloorId;
+
+    Room.update(
+        {
+            name: name,
+            capacity: capacity,
+            FloorId: FloorId
+        },
+        {
+            where: {id: roomId}
+        }
+    )
+    .then(()=>{
+        res.send('successfully updated...');
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+
+route.get('/users/edit/:id', function(req,res){
+    const userId = req.params.id;
+
+    User.findByPk(userId, {include: [Floor]})
+    .then(user=>{
+        res.send(user);
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+route.post('/users/edit/:id', function(req,res){
+    const userId = req.params.id;
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const FloorId = req.body.FloorId;
+
+    User.update(
+        {
+            username: userName,
+            password: password,
+            FloorId: FloorId
+        },
+        {
+            where: {id: userId}
+        }
+    )
+    .then(()=>{
+        res.send('successfully updated..');
+    })
+    .catch(err=>{
+        res.send(err.message);
+    })
+})
+
+route.get('/login', function(req,res){
+    res.render('index');
+})
+route.post('/login', function(req,res){
+    const userName = req.body.userName;
+    const password = req.body.password;
+
+    User.findAll({
+        where: {name: userName}
+    })
+    .then(user=>{
+        if(user==null) {
+            res.send('username or password wrong!')
+        } else {
+            res.send('user succesfully login!')
+        }
+    })
+    .catch(err=>{
+        frames.send(err.message);
+    })
+})
 
 module.exports = route
->>>>>>> d13aef3508786ec9a05bb3afb482060980f9afef
