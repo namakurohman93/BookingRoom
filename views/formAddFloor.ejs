@@ -1,0 +1,22 @@
+<% let data = {title: 'Form Add Floor'} %>
+<% data.styles = [{href: 'styles-main.css'}] %>
+<% data.styles.push({href: 'https://www.w3schools.com/w3css/4/w3.css'}) %>
+<%- include('spatial/head', { data })%>
+
+<body>
+  <h1 class="header">Add Floor</h1>
+
+  <div class="form-container w3-card-4 container">
+    <form class="w3-container" action="" method="post">
+      <p>
+        <label class="w3-text-blue"><b>Floor Name</b></label>
+        <input class="w3-input w3-border" name="floorName" type="text" required>
+      </p>
+      <p>
+        <button class="w3-btn w3-blue">Submit</button>
+      </p>
+    </form>
+  </div>
+</body>
+
+<%- include('spatial/foot') %>

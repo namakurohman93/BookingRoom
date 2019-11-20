@@ -151,12 +151,4 @@ route.post('/users/delete/:id', function(req,res){
     })
 })
 
-<<<<<<< HEAD
-//Admin: edit
-route.get('/floors/edit/:id', function(req,res){
-    
-})
-=======
-
 module.exports = route
->>>>>>> d13aef3508786ec9a05bb3afb482060980f9afef

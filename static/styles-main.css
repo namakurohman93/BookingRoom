@@ -1,0 +1,19 @@
+h1.header {
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+.container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p a {
+  color: blue
+}
