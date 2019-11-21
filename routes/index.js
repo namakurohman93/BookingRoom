@@ -307,7 +307,7 @@ route.get('/book/add', function(req,res){
     if(statusAvailable) {
         Room.findByPk(roomId)
         .then(room=>{
-            if(room.capacity>=participant) {
+            if(room.capacity>participant) {
                 return RoomUser.create({
                     UserId: userId,
                     RoomId: roomId,

@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     FloorId: DataTypes.INTEGER,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    role: DataTypes.STRING
   }, {sequelize});
   User.associate = function(models) {
     User.belongsToMany(models.Room, {through: models.RoomUser})

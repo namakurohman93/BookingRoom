@@ -5,7 +5,7 @@ const route = require('./routes')
 const cookieParser = require('cookie-parser')
 
 let app = express();
-let PORT = 3000;
+let PORT = process.env.PORT || 3000; //port heroku
 
 app.set('view engine', 'ejs');
 
