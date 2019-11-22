@@ -148,7 +148,7 @@ router.get('/floor/edit/:id', function(req,res){
     })
 })
 
-router.post('/floors/edit/:id', function(req,res){
+router.post('/floor/edit/:id', function(req,res){
     const floorId = req.params.id;
     const name = req.body.name;
 
