@@ -7,10 +7,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "1v0TY56$",
-    "database": "BookingRoomv1",
-    "host": "127.0.0.1",
+    "username": "vdzptrhjtpkkqg",
+    "password": "42f9a9a9609b4fdd96c661d5bb20ef683fe682da519609039d6207f048c7c4aa",
+    "database": "d394r8kn4ram30",
+    "host": "ec2-174-129-253-174.compute-1.amazonaws.com",
     "use_env_variable": "DATABASE_URL",
     "dialect": "postgres"
   }
