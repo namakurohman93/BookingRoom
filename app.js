@@ -6,7 +6,6 @@ const { User, Floor } = require('./models')
 const { passwordChecker, getDate } = require('./helpers')
 const { userRouter, adminRouter } = require('./routes')
 
-let app = express();
 let port = process.env.PORT || 3000; //port heroku
 
 app.locals.getDate = getDate
