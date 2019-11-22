@@ -7,21 +7,17 @@
 <body>
   <%- include('components/navbar', { username }) %>
   
-  <h1 class="header">Add User</h1>
+  <h1 class="header">Add Room</h1>
 
   <div class="form-container w3-card-4 container">
     <form class="w3-container" action="" method="post">
       <p>
-        <label class="w3-text-blue"><b>Username</b></label>
-        <input class="w3-input w3-border" name="username" type="text" required>
+        <label class="w3-text-blue"><b>Room Name</b></label>
+        <input class="w3-input w3-border" name="name" type="text" required>
       </p>
       <p>
-        <label class="w3-text-blue"><b>Password</b></label>
-        <input class="w3-input w3-border" name="password" type="password" required>
-      </p>
-      <p>
-        <label class="w3-text-blue"><b>Email</b></label>
-        <input class="w3-input w3-border" name="email" type="email" required>
+        <label class="w3-text-blue"><b>Room Capacity</b></label>
+        <input class="w3-input w3-border" name="capacity" type="number" required>
       </p>
       <p>
         <label class="w3-text-blue"><b>Floor</b></label>

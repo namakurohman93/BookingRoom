@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<head>
+  <title>Test</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <h1 class="header">Login Form </h1>
+
+  <% if (message) { %>
+    <div class="form-container">
+      <div class="w3-panel w3-pale-red w3-card-4">
+        <h3>Error</h3>
+        <p><%= message %></p>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="form-container w3-card-4">
+
+    <form class="w3-container" action="" method="post">
+      <p>
+        <label class="w3-text-blue"><b>Username</b></label>
+        <input class="w3-input w3-border" name="username" type="text" required>
+      </p>
+      <p>
+        <label class="w3-text-blue"><b>Password</b></label>
+        <input class="w3-input w3-border" name="password" type="password" required>
+      </p>
+      <p>
+        <button class="w3-btn w3-blue">Login</button>
+      </p>
+      <p>
+        <a href="/register">Register</a>
+      </p>
+    </form>
+  </div>
+</body>
+
+</html>

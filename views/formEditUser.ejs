@@ -7,13 +7,13 @@
 <body>
   <%- include('components/navbar', { username }) %>
   
-  <h1 class="header">Add User</h1>
+  <h1 class="header">Edit User</h1>
 
   <div class="form-container w3-card-4 container">
     <form class="w3-container" action="" method="post">
       <p>
         <label class="w3-text-blue"><b>Username</b></label>
-        <input class="w3-input w3-border" name="username" type="text" required>
+        <input class="w3-input w3-border" name="username" type="text" required value="<%= data.user.username %>">
       </p>
       <p>
         <label class="w3-text-blue"><b>Password</b></label>
@@ -21,7 +21,7 @@
       </p>
       <p>
         <label class="w3-text-blue"><b>Email</b></label>
-        <input class="w3-input w3-border" name="email" type="email" required>
+        <input class="w3-input w3-border" name="email" type="email" required value="<%= data.user.email %>">
       </p>
       <p>
         <label class="w3-text-blue"><b>Floor</b></label>

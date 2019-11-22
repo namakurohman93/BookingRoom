@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<head>
+  <title>Test</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <%- include('components/navbar', { username }) %>
+  
+  <h1 class="header">Edit Floor</h1>
+
+  <div class="form-container w3-card-4 container">
+    <form class="w3-container" action="" method="post">
+      <p>
+        <label class="w3-text-blue"><b>Floor Name</b></label>
+        <input class="w3-input w3-border" name="name" type="text" required value="floor.name">
+      </p>
+      <p>
+        <button class="w3-btn w3-blue">Submit</button>
+      </p>
+    </form>
+  </div>
+</body>
+
+</html>

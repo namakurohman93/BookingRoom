@@ -1,17 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.Sequelize.Model
-
-  class Floor extends Model {
-
-  }
+  class Floor extends sequelize.Sequelize.Model {}
 
   Floor.init({
     name: DataTypes.STRING
-  }, {sequelize});
+  }, { sequelize });
+
   Floor.associate = function(models) {
-    Floor.hasMany(models.Room);
-    Floor.hasMany(models.User);
+    Floor.hasMany(models.User)
+    Floor.hasMany(models.Room)
   };
+
   return Floor;
 };
