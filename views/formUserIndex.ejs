@@ -1,0 +1,83 @@
+<!DOCTYPE>
+<head>
+  <title>Test</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <%- include('components/navbar', { username }) %>
+
+  <h1 class="header">Main Page</h1>
+
+  <div class="container">
+    <% data.floors.forEach(floor => { %>
+      <button class="w3-bar-item w3-button" onclick="openTab('<%= floor.id %>')"><%= floor.name %></button>
+    <% }) %>
+    <button class="w3-bar-item w3-button" onclick="openTab('booking-list')">Booking List</button>
+
+    <% data.floors.forEach(floor => { %>
+      <div id="<%= floor.id %>" class="w3-container tabs" style="display:none">
+        <p>&nbsp;</p>
+        <table class="w3-table-all w3-hoverable w3-card-4">
+            <thead>
+              <tr class="w3-light-grey">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+        <% floor.Rooms.forEach(room => { %>
+          <tr>
+            <td><%= room.id %></td>
+            <td><%= room.name %></td>
+            <td><%= room.capacity %></td>
+            <td><a href="/users/addBooking/<%= room.id %>">Booking Room</a></td>
+          </tr>
+        <% }) %>
+      </table>
+      </div>
+    <% }) %>
+
+    <div id="booking-list" class="w3-container tabs" style="display:none">
+      <p>&nbsp;</p>
+      <% if (data.userRooms.length > 0) { %>
+        <table class="w3-table-all w3-hoverable w3-card-4">
+            <thead>
+              <tr class="w3-light-grey">
+                <th>Id</th>
+                <th>Room Name</th>
+                <th>Booked by</th>
+                <th>Start Booking</th>
+                <th>End Booking</th>
+              </tr>
+            </thead>
+        <% data.userRooms.forEach(userRoom => { %>
+          <tr>
+            <td><%= userRoom.id %></td>
+            <td><%= userRoom.Room.name %></td>
+            <td><%= userRoom.User.username %></td>
+            <td><%= userRoom.book_date_start.toLocaleString() %></td>
+            <td><%= userRoom.book_date_end.toLocaleString() %></td>
+          </tr>
+        <% }) %>
+        </table>
+      <% } else { %>
+        <h3>Currently there is no data</h3>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+  function openTab(cityName) {
+    var i;
+    var x = document.getElementsByClassName("tabs");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
+  </script>
+</body>
+
+</html>

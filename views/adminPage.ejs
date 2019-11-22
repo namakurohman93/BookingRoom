@@ -1,0 +1,119 @@
+<!DOCTYPE>
+<head>
+  <title>Test</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <%- include('components/navbar', { username }) %>
+  
+  <h1 class="header">Main Page</h1>
+
+  <div class="container">
+    <div class="w3-bar w3-blue">
+      <!-- <button class="w3-bar-item w3-button" onclick="openTab('Book')">Book</button> -->
+      <button class="w3-bar-item w3-button" onclick="openTab('Floor')">Floor</button>
+      <button class="w3-bar-item w3-button" onclick="openTab('User')">User</button>
+      <button class="w3-bar-item w3-button" onclick="openTab('Room')">Room</button>
+    </div>
+
+    <div id="Floor" class="w3-container tabs" style="display:none">
+      <h2>Floor</h2>
+      <p>In here will be a table for floors.</p>
+      <p><a href="/admin/floors/add">Add Floor</a></p>
+      <% if (data.floors.length > 0) { %>
+        <table class="w3-table-all w3-hoverable w3-card-4">
+            <thead>
+              <tr class="w3-light-grey">
+                <th>Id</th>
+                <th>Floor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+        <% data.floors.forEach(floor => { %>
+          <tr>
+            <td><%= floor.id %></td>
+            <td><%= floor.name %></td>
+            <td> <a href="/admin/floor/edit/<%= floor.id %>">Edit</a> | <a href="/admin/floor/delete/<%= floor.id %>">Delete</a> </td>
+          </tr>
+        <% }) %>
+      </table>
+      <% } else { %>
+        <p>Currently there is no data</p>
+      <% } %>
+    </div>
+
+    <div id="User" class="w3-container tabs" style="display:none">
+      <h2>User</h2>
+      <p>In here will be a table for users.</p>
+      <p><a href="admin/user/add">Add User</a></p>
+
+      <% if (data.users.length > 0) { %>
+        <table class="w3-table-all w3-hoverable w3-card-4">
+            <thead>
+              <tr class="w3-light-grey">
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Floor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+        <% data.users.forEach(user => { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= user.Floor.name %></td>
+            <td> <a href="/admin/user/edit/<%= user.id %>">Edit</a> | <a href="/admin/user/delete/<%= user.id %>">Delete</a> </td>
+          </tr>
+        <% }) %>
+        </table>
+      <% } else { %>
+        <p>Currently there is no data</p>
+      <% } %>
+    </div>
+
+    <div id="Room" class="w3-container tabs" style="display:none">
+      <h2>Room</h2>
+      <p>In here will be a table for rooms.</p>
+      <p><a href="admin/room/add">Add Room</a></p>
+
+      <% if (data.rooms.length > 0) { %>
+        <table class="w3-table-all w3-hoverable w3-card-4">
+            <thead>
+              <tr class="w3-light-grey">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Floor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+        <% data.rooms.forEach(room => { %>
+          <tr>
+            <td><%= room.id %></td>
+            <td><%= room.name %></td>
+            <td><%= room.capacity %></td>
+            <td><%= room.Floor.name %></td>
+            <td> <a href="/admin/room/edit/<%= room.id %>">Edit</a> | <a href="/admin/room/delete/<%= room.id %>">Delete</a> </td>
+          </tr>
+        <% }) %>
+      </table>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+  function openTab(cityName) {
+    var i;
+    var x = document.getElementsByClassName("tabs");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
+  </script>
+</body>
+
+</html>

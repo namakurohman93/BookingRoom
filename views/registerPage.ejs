@@ -5,9 +5,16 @@
 </head>
 
 <body>
-  <%- include('components/navbar', { username }) %>
-  
-  <h1 class="header">Add User</h1>
+  <h1 class="header">Register</h1>
+
+  <% if (success) { %>
+    <div class="form-container">
+      <div class="w3-panel w3-green w3-card-4">
+        <h3>Success</h3>
+        <p><%= success %></p>
+      </div>
+    </div>
+  <% } %>
 
   <div class="form-container w3-card-4 container">
     <form class="w3-container" action="" method="post">
@@ -33,6 +40,9 @@
       </p>
       <p>
         <button class="w3-btn w3-blue">Submit</button>
+      </p>
+      <p>
+        <a href="/login">Already registered?</a>
       </p>
     </form>
   </div>

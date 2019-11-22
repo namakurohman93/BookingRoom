@@ -1,29 +1,21 @@
 {
-  "name": "BookingRoom",
+  "name": "pp",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/didadadida93/BookingRoom.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/didadadida93/BookingRoom/issues"
-  },
-  "homepage": "https://github.com/didadadida93/BookingRoom#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.4",
-    "ejs": "^2.7.3",
+    "bcrypt": "^3.0.7",
+    "ejs": "^2.7.4",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "nodemailer": "^6.3.1",
-    "pg": "^7.12.1",
+    "pg": "^7.14.0",
     "sequelize": "^5.21.2"
   }
 }

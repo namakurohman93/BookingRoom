@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<head>
+  <title>Test</title>
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <%- include('components/navbar', { username }) %>
+
+  <h1 class="header">Booking Room</h1>
+
+  <div class="form-container w3-card-4 container">
+    <form class="w3-container" action="" method="post">
+      <p>
+        <label class="w3-text-blue"><b>Lantai</b></label>
+        <input class="w3-input w3-border" name="floor" type="text" required disabled value="<%= data.room.Floor.name %>">
+      </p>
+      <p>
+        <label class="w3-text-blue"><b>Room Name</b></label>
+        <input class="w3-input w3-border" name="name" type="text" required disabled value="<%= data.room.name %>">
+      </p>
+      <p>
+        <label class="w3-text-blue"><b>Participant</b></label>
+        <input class="w3-input w3-border" name="capacity" type="number" required min="1" max="<%= data.room.capacity %>">
+      </p>
+      <p>
+        <label class="w3-text-blue"><b>Booking Start At</b></label>
+        <input class="w3-input w3-border" name="book_date_start" type="date" required value="<%= getDate() %>" disabled>
+        <input type="text" hidden value="<%= getDate() %>" name="book_date_start">
+        <input class="w3-input w3-border" name="book_time_start" type="time" required>
+      </p>
+      <p>
+        <label class="w3-text-blue"><b>Booking End At</b></label>
+        <input class="w3-input w3-border" name="book_date_end" type="date" required value="<%= getDate() %>" disabled>
+        <input type="text" hidden value="<%= getDate() %>" name="book_date_end">
+        <input class="w3-input w3-border" name="book_time_end" type="time" required>
+      </p>
+      <p>
+        <button class="w3-btn w3-blue">Submit</button>
+      </p>
+    </form>
+  </div>
+</body>
+
+</html>
