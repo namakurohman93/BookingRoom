@@ -5,7 +5,7 @@ const route = require('./routes')
 const cookieParser = require('cookie-parser')
 
 let app = express();
-let PORT = process.env.PORT || 3000; //port heroku
+let port = process.env.PORT || 3000; //port heroku
 
 app.set('view engine', 'ejs');
 
@@ -18,4 +18,4 @@ app.get('/', (request, response) => {
   response.render('formEditFloor')
 })
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port ${port}`));
